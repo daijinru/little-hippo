@@ -1,0 +1,27 @@
+{
+  "name": "little-hippo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "node bin/index.js serve --scan src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daijinru/little-hippo.git"
+  },
+  "author": "daijr <jeocat@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daijinru/little-hippo/issues"
+  },
+  "homepage": "https://github.com/daijinru/little-hippo#readme",
+  "dependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "commander": "^7.2.0",
+    "fs-extra": "^10.0.0"
+  }
+}
