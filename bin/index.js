@@ -12,8 +12,10 @@ program
   .command('serve')
   .description('启动本地开发环境')
   .option('--scan <path>', '指定扫描路径')
+  .option('--watch', '监听编译')
+  .option('--stdio', '打印编译信息')
   .action(cmd => {
-    require('../index.js')(cmd);
+    require('../index.js')();
     // nodemon({
     //   script: path.resolve(__dirname, '../index.js'),
     //   exec: 'babel-node --config-file="./babel.config.js"',

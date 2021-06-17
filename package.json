@@ -4,7 +4,7 @@
   "description": "",
   "main": "bin/index.js",
   "scripts": {
-    "test": "node bin/index.js serve --scan src"
+    "test": "node bin/index.js serve --stdio --scan test"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "dependencies": {
     "@babel/cli": "^7.14.5",
     "@babel/core": "^7.14.6",
+    "@babel/parser": "^7.14.6",
     "@babel/plugin-proposal-decorators": "^7.14.5",
     "@babel/preset-env": "^7.14.5",
     "commander": "^7.2.0",

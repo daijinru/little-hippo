@@ -15,7 +15,7 @@ module.exports = class ApplicationContext extends EventEmitter {
     this
       .doStarter()
       .createContextPaths(cmd)
-      // .doRegisterDecorators()
+      .doRegisterDecorators()
       .doCompiledSourceCode()
       // .doComponentScan()
       // .createDevServe()
@@ -30,9 +30,9 @@ module.exports = class ApplicationContext extends EventEmitter {
   createContextPaths(cmd) {
     if (cmd.scan) {
       this.context.ROOT_PATH = process.cwd();
-      this.context.HIPPO_PATH = path.resolve(__dirname, '../');
       this.context.SRC_PATH = path.resolve(process.cwd(), cmd.scan);
     }
+    this.context.cmd = cmd;
     return this;
   }
   doStarter() {
