@@ -3,7 +3,7 @@
  * @param  {Function} wrapped 被包裹的装饰器，适用类装饰器
  * @return {Function} 返回被包裹的函数
  */
-module.exports = function(wrapped) {
+function Component(wrapped) {
   return function() {
     if (typeof arguments[0] ===  'function') {
       arguments[0].component = {};
@@ -11,3 +11,5 @@ module.exports = function(wrapped) {
     return wrapped.apply(this, arguments);
   }
 }
+
+module.exports = Component;

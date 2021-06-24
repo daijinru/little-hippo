@@ -1,6 +1,6 @@
 const Component = require('./Component.js');
 
-module.exports = function(options) {
+function Page(options) {
   const {
     name,
     entry,
@@ -13,3 +13,5 @@ module.exports = function(options) {
   }
   return Component(decorator);
 }
+
+module.exports = Page;

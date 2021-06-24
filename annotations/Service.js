@@ -1,6 +1,7 @@
 const Component = require('./Component.js');
 
-function decorator(target) {
+const Service = Component(function(target) {
   target.component.service = true;
-}
-module.exports =  Component(decorator);
+});
+
+module.exports = Component(Service);
