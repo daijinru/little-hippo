@@ -4,4 +4,4 @@ const Service = Component(function(target) {
   target.component.service = true;
 });
 
-module.exports = Component(Service);
+module.exports = Service;

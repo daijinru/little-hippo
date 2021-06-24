@@ -4,7 +4,10 @@
 class Abc {
 }
 
-@Page
+@Page({
+  name: 'aaa',
+  entry: 'dfs.js'
+})
 class Abd {}
 
 console.info(Abc.component);

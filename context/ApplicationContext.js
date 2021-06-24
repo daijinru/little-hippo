@@ -40,7 +40,7 @@ module.exports = class ApplicationContext extends EventEmitter {
     return this;
   }
   doRegisterDecorators() {
-    require('../annotations/index.js')();
+    require('../annotations/index.js').register();
     return this;
   }
   doCompiledSourceCode() {
