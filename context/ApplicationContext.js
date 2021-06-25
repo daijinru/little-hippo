@@ -6,19 +6,27 @@ const path = require('path');
  */
 module.exports = class ApplicationContext extends EventEmitter {
   cmd = {};
-  components = [];
-  devServer = null;
   context = {};
   constructor(cmd) {
     super();
     this.cmd = cmd;
     this
-      .doStarter()
-      .createContextPaths(cmd)
-      .doCompiledSourceCode()
-      // .doComponentScan()
-      // .createDevServe()
-      .doFinished()
+      .starter()
+      .initializeApplicationConfiguration()
+      .initializeApplicationContext(cmd)
+      .transformBuildInAnnotations()
+      .initializeApplicationServer()
+      .finished()
+    return this;
+  }
+  starter() {
+    this.emit('hippo:start');
+    return this;
+  }
+  contextPrepared() {
+    return this;
+  }
+  initializeApplicationConfiguration() {
     return this;
   }
   /**
@@ -26,7 +34,7 @@ module.exports = class ApplicationContext extends EventEmitter {
    * @param {object} cmd 命令行参数
    * @returns this
    */
-  createContextPaths(cmd) {
+  initializeApplicationContext(cmd) {
     if (cmd.scan) {
       this.context.ROOT_PATH = process.cwd();
       this.context.SRC_PATH = path.resolve(process.cwd(), cmd.scan);
@@ -34,25 +42,14 @@ module.exports = class ApplicationContext extends EventEmitter {
     this.context.cmd = cmd;
     return this;
   }
-  doStarter() {
-    this.emit('hippo:start');
-    return this;
-  }
-  doCompiledSourceCode() {
+  transformBuildInAnnotations() {
     require('./transformSourceCode')(this.context);
     return this;
   }
-  doComponentScan() {
-    this.components = require('./componentScan.js')(this.context);
-    this.context.components = this.components;
+  initializeApplicationServer() {
     return this;
   }
-  createDevServe() {
-    this.devServer = require('../services/startupVueCliService.js')(this.context);
-    this.context.devServer = this.devServer;
-    return this;
-  }
-  doFinished() {
+  finished() {
     this.emit('hippo:finished');
     return this;
   }
