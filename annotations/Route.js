@@ -1,12 +1,10 @@
 const Component = require('./Component.js');
 
-function Route(path, options) {
+function Route(option = {}) {
   function decorator(target) {
-    target.component.route = {};
-    target.component.route.path = path;
-    target.component.route.options = options;
+    target.$$component.route = option;
   }
-  return Component(decorator);
+  return Component(decorator, 'route');
 }
 
 module.exports = Route;

@@ -1,15 +1,4 @@
 /**
- * 内置的装饰器
- */
-function buildIns() {
-  global.Route = require('./Route.js');
-  global.Service = require('./Service.js');
-  global.Page = require('./Page.js');
-  global.Inject = require('./Inject.js');
-  global.Injectable = require('./Injectable.js');
-}
-
-/**
  * 收集内置的合法装饰器
  */
 let LEGAL_DECORATORS = null;
@@ -26,9 +15,6 @@ function collectDecorators() {
 }
 
 module.exports = {
-  register() {
-    buildIns();
-  },
   isLegalByName(name) {
     if (LEGAL_DECORATORS) {
       return LEGAL_DECORATORS.includes(name);

@@ -15,7 +15,6 @@ module.exports = class ApplicationContext extends EventEmitter {
     this
       .doStarter()
       .createContextPaths(cmd)
-      .doRegisterDecorators()
       .doCompiledSourceCode()
       // .doComponentScan()
       // .createDevServe()
@@ -37,10 +36,6 @@ module.exports = class ApplicationContext extends EventEmitter {
   }
   doStarter() {
     this.emit('hippo:start');
-    return this;
-  }
-  doRegisterDecorators() {
-    require('../annotations/index.js').register();
     return this;
   }
   doCompiledSourceCode() {

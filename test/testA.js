@@ -1,14 +1,19 @@
 
-@Service
-@Page
+@Service()
+@Page({
+  name: 'Abc'
+})
 class Abc {
 }
 
 @Page({
-  name: 'aaa',
-  entry: 'dfs.js'
+  name: 'Abd',
 })
-class Abd {}
+@Service()
+class Abd  {
+  static main() {}
+}
 
-console.info(Abc.component);
-console.info(Abd.component);
+
+console.info(Abc.$$component);
+console.info(Abd.$$component);

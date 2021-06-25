@@ -1,7 +1,10 @@
 const Component = require('./Component.js');
 
-const Service = Component(function(target) {
-  target.component.service = true;
-});
+function Service(option = {}) {
+  function decorator(target) {
+    target.$$component.service = option;
+  }
+  return Component(decorator, 'service');
+}
 
 module.exports = Service;

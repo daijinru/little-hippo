@@ -1,12 +1,6 @@
 module.exports = {
-  presets: [
-    // '@babel/preset-env',
-  ],
   plugins: [
-    ['./hippoPluginImportDecorators'],
     ['@babel/plugin-proposal-decorators', {'legacy': true}],
+    ['./babel-plugin-hippo.js'],
   ],
-  ignore: [
-    'babel.config.js',
-  ]
 }

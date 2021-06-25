@@ -1,17 +1,10 @@
 const Component = require('./Component.js');
 
-function Page(options) {
-  const {
-    name,
-    entry,
-  } = options;
+function Page(option = {}) {
   function decorator(target) {
-    target.component.page = {
-      name,
-      entry,
-    };
+    target.$$component.page = option;
   }
-  return Component(decorator);
+  return Component(decorator, 'page');
 }
 
 module.exports = Page;

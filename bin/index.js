@@ -16,11 +16,6 @@ program
   .option('--stdio', '打印编译信息')
   .action(cmd => {
     require('../index.js')();
-    // nodemon({
-    //   script: path.resolve(__dirname, '../index.js'),
-    //   exec: 'babel-node --config-file="./babel.config.js"',
-    //   args: process.argv.slice(3),
-    // });
   });
 
 if (!process.argv.slice(2).length) {
