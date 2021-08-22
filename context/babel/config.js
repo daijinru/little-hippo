@@ -1,6 +1,9 @@
 module.exports = {
   plugins: [
     ['@babel/plugin-proposal-decorators', {'legacy': true}],
-    ['./babel-plugin-hippo.js'],
+    ['./plugin-hippo.js'],
   ],
 }
+
+
+

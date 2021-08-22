@@ -1,5 +1,5 @@
 module.exports = function() {
-  const ApplicationContext = require('./context/ApplicationContext.js');
+  const ApplicationContext = require('./context/Application.js');
   new ApplicationContext(cleanArgs(process.argv));
 
   function cleanArgs (cmd = []) {

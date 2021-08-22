@@ -1,10 +1,10 @@
 const EventEmitter = require('events');
 const path = require('path');
 /**
- * 在这里创建应用上下文
+ * 应用上下文入口
  * @param {object} cmd CLI 命令参数
  */
-module.exports = class ApplicationContext extends EventEmitter {
+module.exports = class Application extends EventEmitter {
   cmd = {};
   context = {};
   constructor(cmd) {
@@ -36,14 +36,15 @@ module.exports = class ApplicationContext extends EventEmitter {
    */
   initializeApplicationContext(cmd) {
     if (cmd.scan) {
-      this.context.ROOT_PATH = process.cwd();
-      this.context.SRC_PATH = path.resolve(process.cwd(), cmd.scan);
+      const ROOT_PATH = this.context.ROOT_PATH = process.cwd();
+      this.context.SRC_PATH = path.resolve(ROOT_PATH, cmd.scan);
+      this.context.OUTPUT_PATH = path.resolve(ROOT_PATH, '.hippoApplication');
     }
     this.context.cmd = cmd;
     return this;
   }
   transformBuildInAnnotations() {
-    require('./transformSourceCode')(this.context);
+    require('./transform')(this.context);
     return this;
   }
   initializeApplicationServer() {
@@ -54,9 +55,3 @@ module.exports = class ApplicationContext extends EventEmitter {
     return this;
   }
 }
-
-// module.exports = function (cmd) {
-//   require('../decorators/index.js')();
-//   const components = require('./componentScan.js')();
-//   require('./createViteServe.js')(components);
-// }
